@@ -1,0 +1,78 @@
+.roles-root-class {
+    width: 100%;
+    height: calc(100vh - 60px);
+    display: grid;
+    grid-template-rows: 320px calc(100vh - 260px);
+  
+    .create-a-role {
+      height: 320px;
+      width: 100%;
+    
+        .create-row-div
+        {
+            width:100%;
+            display: flex;
+            justify-content: center;
+            margin: 20px 0px;
+        }
+      .create-role-container {
+        width: 400px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+        .form-container {
+          display: flex;
+          flex-direction: column;
+  
+          .field-container {
+            margin-bottom: 15px;
+  
+            .label {
+              display: block;
+              margin-bottom: 5px;
+              font-weight: bold;
+            }
+  
+            .input,
+            .textarea {
+              width: 100%;
+              padding: 8px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+            }
+  
+            .textarea {
+              height: 60px;
+              resize: none;
+            }
+          }
+  
+          .button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+  
+            &:hover {
+              background-color: #0056b3;
+            }
+          }
+        }
+      }
+    }
+  
+    .role-list {
+      padding: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+  
