@@ -521,9 +521,51 @@ video {
 [hidden]:where(:not([hidden="until-found"])) {
   display: none;
 }
+<<<<<<< HEAD
 .table {
   display: table;
 }
+=======
+.container {
+  width: 100%;
+}
+@media (min-width: 640px) {
+
+  .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+
+  .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+
+  .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+
+  .container {
+    max-width: 1536px;
+  }
+}
+.table {
+  display: table;
+}
+.border {
+  border-width: 1px;
+}
+>>>>>>> 76dd24c0f78a99e37e45abf5e689ea47441d7ee0
 .antialiased {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
