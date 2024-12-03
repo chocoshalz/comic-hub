@@ -1,0 +1,89 @@
+// UsersList.module.scss
+.usersList {
+  padding: 20px;
+  background-color: #f5f2ec;//#f9f9f9;
+  border-radius: 8px;
+  height: calc(100vh - 100px);
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 600;
+    font-size: 25px;
+  }
+
+  .searchInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+
+    &:focus {
+      border-color: #4caf50;
+    }
+  }
+
+  input{
+    width:95%;
+  }
+  input,
+  select {
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    // margin-top: 5px;
+
+    &:focus {
+      border-color: #4caf50;
+    }
+  }
+
+  .rdt_Table {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .editButton,
+  .saveButton {
+    background-color: #4caf50;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #45a049;
+    }
+  }
+
+  .saveButton {
+    background-color: #2196f3;
+    &:hover {
+      background-color: #1976d2;
+    }
+  }
+
+  // UsersList.module.scss
+.cancelButton {
+  background-color: #f44336;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #d32f2f;
+  }
+}
+}
