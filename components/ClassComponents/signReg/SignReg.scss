@@ -1,0 +1,82 @@
+.signin-register-root-class{
+    height:100%;
+    width:100%;
+    display: grid;
+    grid-template-rows: 40px calc(100% - 40px);
+
+    .signin-register{
+        height:100%;
+        width:100%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        .signin, .register{
+            width:100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .signin
+        {
+            border-bottom: 2px solid gray;
+            cursor: pointer;
+        }
+        .register{
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+        }
+    }
+
+    .signin-register-content
+    {
+        height:100%;
+        width:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        .container{
+            width:90%;
+            height:100%;
+        }
+        TextField{
+            width:100%;   
+        }
+        .username, .email, .password, .submit
+        {
+            width:100%;
+            height:80px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .submit-button{
+            width:70px;
+            height:35px;
+            background-color: #0070f3;
+            color:white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .username{}
+        .email{}
+        .password{}
+        .submit{}
+
+        .already-have-account{
+            font-size: 13px;
+            width: 100%;
+            text-align: center;
+            span{
+                padding:0px 5px;
+                color:blue;
+                cursor: pointer;
+            }
+        }
+    }
+}
