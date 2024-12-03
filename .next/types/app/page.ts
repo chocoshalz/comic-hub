@@ -1,4 +1,4 @@
-// File: C:\Shalini\Projects\bonk-comic-hub\bonk-comic-hub\bonk-comic-hub\app\page.tsx
+// File: C:\Shalini\Projects\code\bonk-comic-hub\comic-hub\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
