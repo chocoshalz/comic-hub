@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-// File: C:\Shalini\Projects\code\bonk-comic-hub\comic-hub\app\page.tsx
-=======
-// File: C:\Web dev\comic-hub\app\page.tsx
->>>>>>> 76dd24c0f78a99e37e45abf5e689ea47441d7ee0
+// File: C:\Users\karan\OneDrive\Desktop\main web\comic-hub\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
