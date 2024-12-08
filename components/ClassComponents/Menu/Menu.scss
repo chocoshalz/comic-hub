@@ -1,0 +1,40 @@
+.sidemenu-root-class
+{
+    width:100%;
+    height:calc(100vh - 60px);
+    background-color: whitesmoke;
+
+    /* Wrapper for the menu */
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 200px;  /* Adjust the width as needed */
+  padding: 10px;
+  background-color: #f8f8f8;  /* Light background color for the menu */
+  border-radius: 8px;  /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+}
+
+/* Individual menu item */
+.menu div {
+  padding: 10px;
+  font-size: 16px;
+  color: #333;  /* Dark text color */
+  cursor: pointer;
+  transition: background-color 0.3s ease;  /* Smooth transition for background */
+  border-radius: 4px;
+}
+
+/* Hover effect for each item */
+.menu div:hover {
+  background-color: #e0e0e0;  /* Light grey background on hover */
+  color: #007bff;  /* Change text color on hover */
+}
+
+/* Active state or selected item */
+.menu div.active {
+  background-color: #007bff;  /* Blue background for active item */
+  color: white;  /* White text for active item */
+}
+
+}
