@@ -1,0 +1,176 @@
+.header-root-class
+{
+  width:100%;
+  height:60px;
+  background-color: aliceblue;
+
+  .heading
+  {
+    height:60px;
+    height: 60px;
+      display: flex;
+      // justify-content: center;
+      align-items: center;
+      margin: 0px 10px;
+      font-size: 20px;
+      font-weight: 700
+  }
+  .logo-part
+    {
+      cursor: pointer;
+      height: 60px;
+      display: flex;
+      // justify-content: center;
+      align-items: center;
+    }
+  .logo-name-{
+    margin-left:3px;
+    font-weight: 700;
+    color: black;
+  }
+  .header-leftpart{
+    width:100%;
+    height:100%;
+
+    
+
+    .user-content{
+        width:100%;
+        height:100%;
+        display: flex;
+        .menu-icon
+        {
+          width:60px;height:60px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img{
+            width:35px; height:35px;
+          }
+        }
+    }
+
+    .admin-content
+    {
+      width:100%;
+      height:100%;
+      display: flex;
+      .menu-icon
+      {
+        width:60px;height:60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+          width:35px; height:35px;
+        }
+      }
+     
+    }
+
+    .guest-user-content{
+      width:100%;
+      height:100%;
+      display: flex;
+      align-items: center;
+      .logo-part
+      {
+        width:125px;
+      }
+    }
+  }
+
+  .header-rightpart
+  {
+    .sign-btn{
+      width:70px;
+      height:35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #0070f3;
+      color:white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .user-content{
+      width:100%;
+      height:100%;
+      display: flex;
+      align-items: center;
+
+      .wishlist{
+        // width: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .cart{
+        width: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+    }
+
+    .admin-content
+    {
+      width:100%;
+      height:100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .guest-user-content{
+      width:100%;
+      height:100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+}
+.header {
+    background-color: aliceblue; /* Alice Blue background color */
+  }
+  
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .menu-icon {
+    color: black; /* You can change the color of the menu icon */
+  }
+  
+  .logo-container {
+    width: 200px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 40px; /* Adjust logo size as needed */
+    height: auto;
+  }
+  
+  .logo-name {
+    margin-left: 10px; /* Space between the logo and name */
+    font-weight: bold;
+    color: #333; /* Adjust the text color */
+  }
+  
+  .signin-btn {
+    // margin-right: 20px; /* Space between SignIn button and the menu */
+    background-color: rgb(76 76 238);
+    color:white;
+  }
+  
+  .menu-container {
+    display: flex;
+    align-items: center;
+  }
+  

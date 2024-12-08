@@ -154,4 +154,174 @@ class HeaderComponent extends Component<HeaderComponentState>
       </Modal>
   }
 
+  AdminBadgeIcon() {
+    return (
+      <Badge
+        badgeContent="Admin"
+        color="error" // Red badge for admin
+        anchorOrigin={{
+          vertical: "top",
+          // horizontal: "right",
+        }}
+        overlap="circular"
+      >
+        <IconButton className="admin-icon">
+          <AdminPanelSettingsIcon style={{ color: "#1976d2" }} /> {/* Blue admin icon */}
+        </IconButton>
+      </Badge>
+    );
+  }
+
+  wishList()
+  {
+    this.navigateTo("wishlist")
+  }
+
+  cart()
+  {
+    this.navigateTo("cart")
+  }
+
+  UserType_Left_Content1(){
+    const user:any = this.state.userInfo
+    const switchtype:string = !!user ? user?.roleName : "Guest User" 
+    switch (switchtype) {
+      case "User":
+        return <div className='user-content'>
+          {/* <div className='menu-icon'>
+            <IconButton edge="start" className="menu-icon" onClick={this.handleMenuClick}>
+             <MenuIcon />
+            </IconButton>
+          </div> */}
+          <div className='logo-part'>
+            <div className="logo-container">
+               <img src="/assets/icons/logo1.svg" alt="Logo" className="logo" />
+               <div className='logo-name-'>comic hub</div>
+             </div>
+          </div>
+        </div>;
+      case "Admin":
+        return <div className='admin-content'>
+          {/* <div className='menu-icon'>
+            <IconButton edge="start" className="menu-icon" onClick={this.handleMenuClick}>
+             <MenuIcon />
+            </IconButton>
+          </div> */}
+          <div className='logo-part'>
+            <div className="logo-container">
+               <img src="/assets/icons/logo1.svg" alt="Logo" className="logo" />
+               <div className='logo-name-'>comic hub</div>
+             </div>
+          </div>
+        </div>;
+      case "Guest User":
+        return <div className='guest-user-content'>
+          {/* <div className='menu-icon'>
+            <IconButton edge="start" className="menu-icon" onClick={this.handleMenuClick}>
+             <MenuIcon />
+            </IconButton>
+          </div> */}
+          <div className='logo-part'>
+            <div className="logo-container">
+               <img src="/assets/icons/logo1.svg" alt="Logo" className="logo" />
+               <div className='logo-name-'>comic hub</div>
+             </div>
+          </div>
+        </div>;
+      default:
+        return null;
+    }
+  };
+
+  UserType_Left_Content(){
+    return (<div className='logo-part'>
+      <div className="logo-container">
+         <img src="/assets/icons/logo1.svg" alt="Logo" className="logo" />
+         <div className='logo-name-'>comic hub</div>
+       </div>
+       <div className='heading'>
+        {this.state.heading.heading}
+       </div>
+    </div>)
+  };
+  
+  UserType_Right_Content(){
+    const user:any = this.state.userInfo
+    const switchtype:string = !!user ? user?.roleName : "Guest User"  
+    switch (switchtype) {
+      case "User":
+        return <div className='user-content'>
+          {/* <div className='wishlist'>
+            <IconButton  className="menu-icon" onClick={()=> this.wishList()}>
+                <FavoriteIcon />
+            </IconButton>
+          </div> */}
+          <div className='cart'>
+            <IconButton  className="menu-icon" onClick={()=> this.cart()}>
+              <ShoppingCartIcon />
+            </IconButton>
+          </div>
+          <div onClick={()=> this.signOut()} className='sign-btn'>
+            Sign Out
+          </div>
+        </div>;
+      case "Admin":
+        return <div className='admin-content'>
+          <div className='' style={{width:'100px', display:'flex', justifyContent:'center'}} >
+            {this.AdminBadgeIcon()}
+          </div>
+          <div onClick={()=> this.signOut()} className='sign-btn'>
+            Sign Out
+          </div>
+        </div>;
+      case "Guest User":
+        return <div className='guest-user-content'>
+          <div>
+          <div onClick={()=> this.signIn()} className='sign-btn'>
+            Sign In
+          </div>
+          </div>
+        </div>;
+      default:
+        return null;
+    }
+  };
+
+  render() {
+    const { anchorEl, menuOpen } = this.state;
+    // const user:any = this.state.userInfo//.userInfo
+    return(<div className='header-root-class'>
+      {
+        this.state.loading 
+        ? <div className='loading'> <div className='spinner'></div> </div>
+        : <div className='parent-row'>
+              <div className='left-child-column header-leftpart'>
+                { this.UserType_Left_Content()}
+              </div>
+             
+              <div className='right-child-column header-rightpart'>
+                {  this.UserType_Right_Content()}
+              </div>
+        </div>
+      }
+       {this.SignContent()}
+      <Menu
+          style={{width: '250px'}}
+          anchorEl={anchorEl}
+          open={menuOpen}
+          onClose={this.handleMenuClose}
+            >
+              {
+                this.state.menuList.map((menu:any, menuI:number)=>(
+                  <MenuItem style={{width: '250px'}} key={menuI} onClick={this.handleMenuClose}>
+                  <Link href={`${menu.url}`} style={{textDecoration:'none'}} passHref> {menu.name} </Link>
+                </MenuItem>
+                ))
+              }
+        </Menu>
+    </div>)
+    
+  }
 }
+
+export default withRouter(HeaderComponent);
