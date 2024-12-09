@@ -1,0 +1,37 @@
+.homecomponent-root-class
+{
+    width:100%;
+    height:calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .get-started, .learn-more
+    {
+        text-decoration: none;
+        background-color: black;
+        color:white;
+        border-radius: 25px 8px 25px 8px !important;
+    }
+
+    .set-home-bg {
+        background-image: url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80)");
+        // url("/assets/images/home/comic-hub-home-bg.jpg");
+        background-size: cover; /* Ensures the image covers the entire element */
+        background-position: center; /* Centers the image */
+        background-repeat: no-repeat; /* Prevents the image from repeating */
+        height: 100%; /* Sets the height to cover the viewport */
+        width: 100%; /* Ensures the width spans the element/container */
+        // filter: brightness(0.7);
+    }
+
+    .getstarted-learnmore
+    {
+        width:100%;
+        height:50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
