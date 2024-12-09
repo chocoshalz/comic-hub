@@ -167,3 +167,186 @@ class SignIn extends Component {
          }
         }
         
+        // shalinisuperadmin@
+        // window.location.href = "admin"
+        // router.push("/admin")
+      }
+    }
+    else {
+
+        const payload = {
+          username: state[userType]['username'],
+          email: state[userType]['email'],
+          password: state[userType]['password'],
+          accountStatus: "active"
+        };
+        this.CreatUser(payload, state, userType)
+      }
+
+
+
+    };
+
+    async CreatUser(payload:any, state:any, userType:string) {
+      (await this.userServ.createUser(payload)).subscribe({
+        next: (res:any) => {
+           console.log("insUserres => ", res)
+          if (res.status === 200) {
+            toast.success(`Register ${state[userType]['username']} user Successfully`);
+          }
+          else {
+            toast(`something went wrong`, {
+              icon: '⚠️',  // Optional icon for the warning
+              style: {
+                border: '1px solid orange',
+                padding: '16px',
+                color: 'orange',
+              },
+            });
+          }
+        },
+        error: (err:any) => {
+          console.error(err); // Handle error response
+        },
+        complete: () => {
+          console.log('Completed'); // Handle completion
+        }
+      });
+    }
+
+    async test(payload:any) {
+      (await this.userServ.createUser(payload)).subscribe({
+        next: (res:any) => {
+         
+        },
+        error: (err:any) => {
+          console.error(err); // Handle error response
+        },
+        complete: () => {
+          console.log('Completed'); // Handle completion
+        }
+      });
+    }
+
+    adminAndusercard(userType: string) {
+      const state: any = this.state;
+      const { signType, email, password, username } = state[userType];
+      return (
+        // ${this.state.isMobile === false ? styles['desktop-sc'] : ""}
+        <div className={`${styles['signin-container']}  `}>
+          <Card className={styles.card}>
+            {/* <CardHeader> */}
+              <h2 className={styles['signin-header']}>
+                {signType === 'Sign In' ? `${userType} Sign In` : `${userType} Register`}
+              </h2>
+            {/* </CardHeader> */}
+            <div className={styles['signin-content']}>
+              <CardContent>
+                <form style={{ width: '300px' }}
+                  onSubmit={(event) => this.handleSubmit(event, userType)}>
+                  {
+                    (signType !== 'Sign In' && userType === 'User') &&
+                    <div className={styles['input-group']}>
+                      <label htmlFor={`${userType}-username`} className={styles.label}>
+                        User Name
+                      </label>
+                      <input
+
+                        type="text"
+                        id={`${userType}-username`}
+                        name={`${userType}-username`}
+                        value={username}
+                        onChange={(event) => this.handleInputChange(event, userType, 'username')}
+                        className={styles.input}
+                        required
+                      />
+                    </div>
+                  }
+
+
+                  <div className={styles['input-group']}>
+                    <label htmlFor={`${userType}-email`} className={styles.label}>
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id={`${userType}-email`}
+                      name={`${userType}-email`}
+                      value={email}
+                      onChange={(event) => this.handleInputChange(event, userType, 'email')}
+                      className={styles.input}
+                      required
+                    />
+                  </div>
+
+                  <div className={styles['input-group']}>
+                    <label htmlFor={`${userType}-password`} className={styles.label}>
+                      Password
+                    </label>
+                    <input
+                      type="password"
+                      id={`${userType}-password`}
+                      name={`${userType}-password`}
+                      value={password}
+                      onChange={(event) => this.handleInputChange(event, userType, 'password')}
+                      className={styles.input}
+                      required
+                    />
+                  </div>
+
+                  <div className={styles['button-group']}>
+                    <button type="submit" className={styles['signin-button']}>
+                      {signType === 'Sign In' ? 'Sign In' : 'Sign Up'}
+                    </button>
+                  </div>
+                  {
+                    userType === "User" &&
+                    <div className={styles['signup-here']}>
+                      if you {signType === 'Sign In' ? 'are new please' : 'already have an account'}{' '}
+                      <span onClick={() => this.toggleSign(userType)}>
+                        {signType === 'Sign In' ? 'Sign Up' : 'Sign In'}
+                      </span>{' '}
+                      here
+                    </div>
+                  }
+
+                </form>
+              </CardContent>
+            </div>
+          </Card>
+        </div>
+      );
+    }
+    handleSelection = (selectedItem: any) => {
+      let state:any = this.state
+      state[state.usetType].email = ""
+      state[state.usetType].password = ""
+      state['usetType'] =  selectedItem.label
+      this.setState(state)
+      console.log("Selected Item:", selectedItem); // Handle the selected item
+    };
+    render() {
+      const { usetType } = this.state
+      const options = [
+        { id: 1, label: 'User', value: 'user' },
+        { id: 2, label: 'Super Admin', value: 'superadmin' },
+        { id: 3, label: 'Admin', value: 'admin' },
+      ];
+      
+
+      return (
+        <div className={styles['admin-and-user-sign']}>
+          <div className={styles['center-card']}>
+            <div className={styles['roles-card']}>
+              <Dropdown options={options} onSelect={(event) => this.handleSelection(event)} />
+            </div>
+            <div className={styles['signin-card']}>
+              {this.adminAndusercard(usetType)}
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+export default SignIn;
