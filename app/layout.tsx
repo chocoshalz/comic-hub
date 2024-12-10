@@ -3,7 +3,13 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AuthClient from "@/services/client/common/ClientServices/authserviceClient";
+import HeaderComponent from "@/components/ClassComponents/HeaderComponent/HeaderComponent";
+import Menu from "@/components/ClassComponents/Menu/Menu";
+/*
+npm install @mui/material @emotion/react @emotion/styled --legacy-peer-deps
 
+*/
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -30,10 +36,22 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased header-content-footer-container`}
       >
-        <header className="hcf-header">
-          this is header part
-        </header>
-        <main className="hcf-content">{children}</main>
+        <div className="header-content-footer-container">
+            <header className="hcf-header">
+              <HeaderComponent></HeaderComponent>
+            </header>
+
+            <div className="hcf-content">
+              <nav className="left-side-menu">
+                <Menu />
+              </nav>
+
+              <main className="right-side-content">
+                {children}
+              </main>
+            </div>
+        </div>
+        <Toaster />
       </body>
     </html>
   );
