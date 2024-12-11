@@ -229,3 +229,28 @@ class Comics extends Component<ProductsPageProps> {
   }
 }
 export default withRouter(Comics);
+
+                        <div className={`left-child-column comics-search-filter`}>
+                        {comicDetail === false && (
+                          <div className="search-filter">
+                            <div style={{width:'40px', cursor:'pointer'}} onClick={()=> this.bestSeller()}>
+                              <img src={"assets/images/comics/best-seller.png"}></img>
+                            </div>
+                            <div>
+                              <div className="comics-search">
+                                <input
+                                  type="text"
+                                  placeholder="search comics"
+                                  onChange={(e) => this.searchComics(e)}
+                                />
+                              </div>
+                            </div>
+                            <div className="comics-filter">
+                              <img
+                                src={"assets/images/comics/filter.png"}
+                                onClick={() => this.filterComics()}
+                              ></img>
+                            </div>
+                          </div>
+                        )}
+                        </div>
