@@ -1,5 +1,88 @@
 {
-  "node": {},
+  "node": {
+    "7f994ea531514c6480631605cd8f3ec217af25252a": {
+      "workers": {
+        "app/api/auth/[...nextauth]/route": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Ckaran%5C%5COneDrive%5C%5CDesktop%5C%5Cbonk-comic-hub%5C%5Capp%5C%5Capi%5C%5Cusers%5C%5CUserServer.ts%22%2C%5B%5B%227f994ea531514c6480631605cd8f3ec217af25252a%22%2C%22default%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        },
+        "app/api/users/route": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Ckaran%5C%5COneDrive%5C%5CDesktop%5C%5Cbonk-comic-hub%5C%5Capp%5C%5Capi%5C%5Cusers%5C%5CUserServer.ts%22%2C%5B%5B%227f994ea531514c6480631605cd8f3ec217af25252a%22%2C%22default%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/api/auth/[...nextauth]/route": "rsc",
+        "app/api/users/route": "rsc"
+      }
+    },
+    "401b2f0992324f2b7c56d33e4acc6f0406dcef7049": {
+      "workers": {
+        "app/api/roles/route": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Ckaran%5C%5COneDrive%5C%5CDesktop%5C%5Cbonk-comic-hub%5C%5Capp%5C%5Capi%5C%5Croles%5C%5Croute.ts%22%2C%5B%5B%22401b2f0992324f2b7c56d33e4acc6f0406dcef7049%22%2C%22DELETE%22%5D%2C%5B%2240758ad60573460f0a7330971b57c47d0d62216c1a%22%2C%22PUT%22%5D%2C%5B%22408c532bb5674af0fd4a042e4a370b9da1717a850c%22%2C%22POST%22%5D%2C%5B%2240ecb15e61efc35e73f6901b03570379fce31e92ad%22%2C%22PATCH%22%5D%2C%5B%2240f0601f4ef66542a40d2e1b782d30f5a5ee2614a8%22%2C%22GET%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/api/roles/route": "rsc"
+      }
+    },
+    "40758ad60573460f0a7330971b57c47d0d62216c1a": {
+      "workers": {
+        "app/api/roles/route": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Ckaran%5C%5COneDrive%5C%5CDesktop%5C%5Cbonk-comic-hub%5C%5Capp%5C%5Capi%5C%5Croles%5C%5Croute.ts%22%2C%5B%5B%22401b2f0992324f2b7c56d33e4acc6f0406dcef7049%22%2C%22DELETE%22%5D%2C%5B%2240758ad60573460f0a7330971b57c47d0d62216c1a%22%2C%22PUT%22%5D%2C%5B%22408c532bb5674af0fd4a042e4a370b9da1717a850c%22%2C%22POST%22%5D%2C%5B%2240ecb15e61efc35e73f6901b03570379fce31e92ad%22%2C%22PATCH%22%5D%2C%5B%2240f0601f4ef66542a40d2e1b782d30f5a5ee2614a8%22%2C%22GET%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/api/roles/route": "rsc"
+      }
+    },
+    "408c532bb5674af0fd4a042e4a370b9da1717a850c": {
+      "workers": {
+        "app/api/roles/route": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Ckaran%5C%5COneDrive%5C%5CDesktop%5C%5Cbonk-comic-hub%5C%5Capp%5C%5Capi%5C%5Croles%5C%5Croute.ts%22%2C%5B%5B%22401b2f0992324f2b7c56d33e4acc6f0406dcef7049%22%2C%22DELETE%22%5D%2C%5B%2240758ad60573460f0a7330971b57c47d0d62216c1a%22%2C%22PUT%22%5D%2C%5B%22408c532bb5674af0fd4a042e4a370b9da1717a850c%22%2C%22POST%22%5D%2C%5B%2240ecb15e61efc35e73f6901b03570379fce31e92ad%22%2C%22PATCH%22%5D%2C%5B%2240f0601f4ef66542a40d2e1b782d30f5a5ee2614a8%22%2C%22GET%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/api/roles/route": "rsc"
+      }
+    },
+    "40ecb15e61efc35e73f6901b03570379fce31e92ad": {
+      "workers": {
+        "app/api/roles/route": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Ckaran%5C%5COneDrive%5C%5CDesktop%5C%5Cbonk-comic-hub%5C%5Capp%5C%5Capi%5C%5Croles%5C%5Croute.ts%22%2C%5B%5B%22401b2f0992324f2b7c56d33e4acc6f0406dcef7049%22%2C%22DELETE%22%5D%2C%5B%2240758ad60573460f0a7330971b57c47d0d62216c1a%22%2C%22PUT%22%5D%2C%5B%22408c532bb5674af0fd4a042e4a370b9da1717a850c%22%2C%22POST%22%5D%2C%5B%2240ecb15e61efc35e73f6901b03570379fce31e92ad%22%2C%22PATCH%22%5D%2C%5B%2240f0601f4ef66542a40d2e1b782d30f5a5ee2614a8%22%2C%22GET%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/api/roles/route": "rsc"
+      }
+    },
+    "40f0601f4ef66542a40d2e1b782d30f5a5ee2614a8": {
+      "workers": {
+        "app/api/roles/route": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Ckaran%5C%5COneDrive%5C%5CDesktop%5C%5Cbonk-comic-hub%5C%5Capp%5C%5Capi%5C%5Croles%5C%5Croute.ts%22%2C%5B%5B%22401b2f0992324f2b7c56d33e4acc6f0406dcef7049%22%2C%22DELETE%22%5D%2C%5B%2240758ad60573460f0a7330971b57c47d0d62216c1a%22%2C%22PUT%22%5D%2C%5B%22408c532bb5674af0fd4a042e4a370b9da1717a850c%22%2C%22POST%22%5D%2C%5B%2240ecb15e61efc35e73f6901b03570379fce31e92ad%22%2C%22PATCH%22%5D%2C%5B%2240f0601f4ef66542a40d2e1b782d30f5a5ee2614a8%22%2C%22GET%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/api/roles/route": "rsc"
+      }
+    },
+    "7f4e4bfb918cef980fb818fbe5eb54fc39f81469e9": {
+      "workers": {
+        "app/api/profile/route": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Ckaran%5C%5COneDrive%5C%5CDesktop%5C%5Cbonk-comic-hub%5C%5Capp%5C%5Capi%5C%5Cprofile%5C%5CProfileServer.ts%22%2C%5B%5B%227f4e4bfb918cef980fb818fbe5eb54fc39f81469e9%22%2C%22default%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/api/profile/route": "rsc"
+      }
+    }
+  },
   "edge": {},
-  "encryptionKey": "UiRXWFc30LQd6WAtSwPbQ/fR9SCmVYdMHNGFZvR8XOQ="
+  "encryptionKey": "R638AqfY40nzA8N7uYQvd1e6u/SNtw0BnfInsTewtmE="
 }

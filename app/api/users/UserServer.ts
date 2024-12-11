@@ -241,6 +241,45 @@ class UserServer {
     let results: any = {
       status: "something went wrong",
     };
+  
+    await db
+      .select({
+        id: users.id,
+        username: users.username,
+        email: users.email,
+        accountStatus: users.accountStatus,
+        createdAt: users.createdAt,
+        roleName: sql`COALESCE(${roles.roleName}, 'User')`.as('roleName'),
+        password: users.password,
+      })
+      .from(users)
+      .leftJoin(userRoles, eq(users.id, userRoles.userId))
+      .leftJoin(roles, eq(userRoles.roleId, roles.id))
+      .where(eq(users.email, emailId))
+      .then((userRes: any) => {
+        // Check if user account is inactive or deleted
+        if (userRes[0]?.accountStatus === 'inactive') {
+          results['status'] = 403; // Forbidden (or 404 Not Found)
+          results['message'] = 'User is inactive or deleted';
+          results['data'] = null; // Don't send user data if inactive
+        } else {
+          results['status'] = 200;
+          results['message'] = 'User found';
+          results['data'] = userRes[0]; // Send user data if active
+        }
+      })
+      .catch((error: any) => {
+        console.error('Error fetching user by email ID:', error);
+        results['error'] = error;
+      });
+  
+    return results;
+  }
+  
+  async getUserByEmailId1(emailId: string) {
+    let results: any = {
+      status: "something went wrong",
+    };
 
     await db
       .select({
@@ -296,6 +335,35 @@ class UserServer {
 
   // Update partial user data (PATCH)
   async patchUser(userId: string, userData: any) {
+    let results: any = {
+      status: "something went wrong",
+    };
+  
+    // Ensure that userData only contains accountStatus (patch update)
+    if (!userData.accountStatus) {
+      results['message'] = 'No accountStatus provided to update';
+      return results;
+    }
+  
+    await db
+      .update(users)
+      .set({ accountStatus: userData.accountStatus }) // Only update accountStatus
+      .where(eq(users.id, userId))
+      .then((patchedUser: any) => {
+        console.log("patchedUser =>", patchedUser);
+        results['userInfo'] = patchedUser;
+        results['status'] = 200;
+        results['message'] = 'User accountStatus patched successfully';
+      })
+      .catch((error: any) => {
+        console.error('Error patching user:', error);
+        results['error'] = error;
+      });
+  
+    return results;
+  }
+  
+  async patchUser1(userId: string, userData: any) {
     let results: any = {
       status: "something went wrong",
     };

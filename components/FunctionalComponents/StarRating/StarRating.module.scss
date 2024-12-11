@@ -1,0 +1,31 @@
+/* StarRating.module.scss */
+.starRating {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+  
+    .filled {
+      color: orange;
+      font-size: 24px;
+    }
+  
+    .empty {
+      color: gray;
+      font-size: 24px;
+    }
+  
+    .filled:hover,
+    .empty:hover {
+      color: darkgoldenrod;
+    }
+  
+    span {
+      transition: color 0.3s ease;
+      cursor: pointer;
+  
+      &:hover {
+        color: lightgray;
+      }
+    }
+  }
+  

@@ -51,3 +51,87 @@ export async function POST(request: Request) {
   }
  
 }
+
+
+export async function PUT(request: Request) {
+  const { searchParams } = new URL(request.url);
+  
+  // Get the 'updateuser' parameter and 'userid' from the query string
+  const updateUserId = await searchParams.get('userid');
+  const userData = await request.json(); // Parse the JSON body for the user data
+
+  if (updateUserId && userData) {
+    try {
+      // Call your update service to update the user by ID
+      const updateResult = await userServ.updateUser(updateUserId, userData);
+
+      if (updateResult.status === 200) {
+        return NextResponse.json({
+          status: updateResult.status,
+          message: updateResult.message,
+          userInfo: updateResult.userInfo,
+        });
+      } else {
+        return NextResponse.json({
+          status: updateResult.status,
+          message: updateResult.message || 'Error updating user',
+          error: updateResult.error || 'Unknown error',
+        });
+      }
+    } catch (error:any) {
+      console.error('Error in PUT request:', error);
+      return NextResponse.json({
+        status: 500,
+        message: 'Internal Server Error',
+        error: error.message,
+      });
+    }
+  } else {
+    return NextResponse.json({
+      status: 400,
+      message: 'Missing user ID or data to update.',
+    });
+  }
+}
+
+
+export async function PATCH(request: Request) {
+  const { searchParams } = new URL(request.url);
+  
+  // Get the 'userid' from the query string
+  const updateUserId = await searchParams.get('userid');
+  const userData = await request.json(); // Parse the JSON body for the user data
+
+  if (updateUserId && userData && userData.accountStatus) {
+    try {
+      // Call your patch service to update the accountStatus for the user
+      const patchResult = await userServ.patchUser(updateUserId, userData);
+
+      if (patchResult.status === 200) {
+        return NextResponse.json({
+          status: patchResult.status,
+          message: patchResult.message,
+          userInfo: patchResult.userInfo,
+        });
+      } else {
+        return NextResponse.json({
+          status: patchResult.status,
+          message: patchResult.message || 'Error patching user',
+          error: patchResult.error || 'Unknown error',
+        });
+      }
+    } catch (error: any) {
+      console.error('Error in PATCH request:', error);
+      return NextResponse.json({
+        status: 500,
+        message: 'Internal Server Error',
+        error: error.message,
+      });
+    }
+  } else {
+    return NextResponse.json({
+      status: 400,
+      message: 'Missing user ID or accountStatus data to patch.',
+    });
+  }
+}

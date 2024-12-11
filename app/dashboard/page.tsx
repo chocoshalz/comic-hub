@@ -1,11 +1,12 @@
 'use client'
 import AdminDashboard from "@/components/ClassComponents/AdminDashboard/AdminDashboard";
 import Comics from "@/components/ClassComponents/Comics/Comics";
+import HomeComponent from "@/components/ClassComponents/HomeComponent/HomeComponen";
 import Products from "@/components/ClassComponents/Products/Products";
 import { subjectService } from "@/services/client/common/ClientServices/SubjectService";
 import { Component } from "react";
 
-class Profile extends Component
+class DashboardPage extends Component
 {
 
     state={
@@ -44,7 +45,6 @@ class Profile extends Component
             case 'User':
                 content = <div>
                     <Comics></Comics>
-                    {/* <Products></Products> */}
                 </div>;
                 break;
             case 'Guest User':
@@ -66,4 +66,4 @@ class Profile extends Component
     }
     
 }
-export default Profile
+export default DashboardPage

@@ -1,4 +1,4 @@
-import { comics, orders } from "@/db/schema";
+import { comics, orders, profile, users } from "@/db/schema";
 import { db } from "@/lib/db";
 import { eq } from "drizzle-orm";
 class OrdersServer {
@@ -27,43 +27,53 @@ class OrdersServer {
   // Get all orders for a user
   async getOrdersByUserId(userId: string) {
     let results: any = { status: "something went wrong" };
-
+  
     try {
-        // Query orders along with comic data
-        const ordersWithComics = await db
-            .select({
-                order: orders, // Select all fields from orders table
-                comicData: comics // Select all fields from the comics table
-            })
-            .from(orders)
-            .leftJoin(comics, eq(orders.comicId, comics.id)) // Join with the comics table on comicId
-            .where(eq(orders.userId, userId)); // Filter by userId
-
-        results["orders"] = ordersWithComics;
-        results["status"] = 200;
-        results["message"] = "Orders retrieved successfully";
+      // Query orders along with comic data, profile data, and user data
+      const ordersWithDetails = await db
+        .select({
+          order: orders, // Select all fields from orders table
+          comicData: comics, // Select all fields from the comics table
+          profileData: profile, // Select all fields from the profile table
+          // userData: users, // Select all fields from the users table
+        })
+        .from(orders)
+        .leftJoin(comics, eq(orders.comicId, comics.id)) // Join with the comics table on comicId
+        .leftJoin(profile, eq(orders.userId, profile.userId)) // Join with the profile table on userId
+        // .leftJoin(users, eq(orders.userId, users.id)) // Join with the users table on userId
+        .where(eq(orders.userId, userId)); // Filter by userId
+  
+      results["orders"] = ordersWithDetails;
+      results["status"] = 200;
+      results["message"] = "Orders retrieved successfully";
     } catch (error: any) {
-        console.error(`Error fetching orders for user ID ${userId}:`, error);
-        results["error"] = error.message || error;
-        results["status"] = 500;
+      console.error(`Error fetching orders for user ID ${userId}:`, error);
+      results["error"] = error.message || error;
+      results["status"] = 500;
     }
-
+  
     return results;
-}
+  }
+  
+
 
 // get all global orders
 async getAllGlobalOrders() {
   let results: any = { status: "something went wrong" };
 
   try {
-    // Query all orders along with comic data
+    // Query all orders along with comic data, profile data, and user data
     const ordersWithComics = await db
       .select({
         order: orders, // Select all fields from orders table
-        comicData: comics // Select all fields from the comics table
+        comicData: comics, // Select all fields from the comics table
+        profileData: profile, // Select all fields from the profile table
+        // userData: users, // Select all fields from the users table
       })
       .from(orders)
-      .leftJoin(comics, eq(orders.comicId, comics.id)); // Join with the comics table on comicId
+      .leftJoin(comics, eq(orders.comicId, comics.id)) // Join with the comics table on comicId
+      .leftJoin(profile, eq(orders.userId, profile.userId)) // Join with the profile table on userId
+      // .leftJoin(users, eq(orders.userId, users.id)); // Join with the users table on userId
 
     results["orders"] = ordersWithComics;
     results["status"] = 200;
@@ -78,27 +88,6 @@ async getAllGlobalOrders() {
 }
 
 
-
-  async getOrdersByUserId1(userId: string) {
-    let results: any = { status: "something went wrong" };
-
-    await db
-      .select()
-      .from(orders)
-      .where(eq(orders.userId, userId))
-      .then((ordersRes: any) => {
-        console.log("ordersRes =>", ordersRes);
-        results["orders"] = ordersRes;
-        results["status"] = 200;
-        results["message"] = "Orders retrieved successfully";
-      })
-      .catch((error: any) => {
-        console.error(`Error fetching orders for user ID ${userId}:`, error);
-        results["error"] = error;
-      });
-
-    return results;
-  }
 
   // Update order status
   async updateOrderStatus(id: string, status: string) {

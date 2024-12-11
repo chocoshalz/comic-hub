@@ -1,0 +1,177 @@
+.year-picker {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+
+  .year-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+
+  .input-reset
+  {
+    width:100%;
+    display: grid;
+    grid-template-columns: calc(100% - 70px) 70px;
+    column-gap: 10px;
+
+    .reset-btn
+    {
+      width: 60px;
+    background-color: purple;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    border-radius: 5px;
+    }
+  }
+
+  .publication-year {
+    width: 100%;
+
+    .py-text {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 5px 0px;
+    }
+
+    legend {
+      width: 130px;
+      position: absolute;
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: -12px;
+      margin-left: 10px;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+    }
+
+    input {
+      font-size: 15px;
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      padding: 7px 5px;
+      border: 1px solid lightgray;
+    }
+  }
+
+  .select-year {
+    width: 100%;
+    padding: 3px 10px;
+  }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modal-content {
+      background-color: #fff;
+      border-radius: 8px;
+      width: 400px;
+      padding: 16px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+
+        h3 {
+          margin: 0;
+        }
+
+        .close-button {
+          background: none;
+          border: none;
+          font-size: 20px;
+          cursor: pointer;
+        }
+      }
+
+      .modal-body {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        .search-bar {
+          padding: 8px;
+          font-size: 14px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+
+          &:focus {
+            outline: none;
+            border-color: #007bff;
+          }
+        }
+
+        .popover-header {
+          display: flex;
+          justify-content: space-between;
+
+          .nav-button {
+            padding: 4px 8px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+
+            &:hover {
+              background-color: #0056b3;
+            }
+          }
+        }
+
+        .popover-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 8px;
+
+          .year-picker-cell {
+            padding: 8px;
+            text-align: center;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+
+            &:hover {
+              background-color: #007bff;
+              color: #fff;
+            }
+
+            &.selected {
+              background-color: #007bff;
+              color: white;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+}

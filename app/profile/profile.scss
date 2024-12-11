@@ -14,6 +14,93 @@
     margin-bottom: 20px;
     color: #333;
   }
+
+  .pro-pic-container
+  {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center
+  }
+  .remove-pro-pic
+  {
+    margin-top: -30px;
+    margin-left: -10px;
+    img{
+      width:20px;
+      height:20px;
+      cursor: pointer;
+    }
+  }
+  .pro-add-edit
+  {
+    color: black;
+    text-transform: lowercase;
+    font-size: 11px;
+    font-weight: 100;
+    height: 19px;
+    display: flex;
+    align-items: center;
+  }
+  .edit-pro-pic
+  {
+    margin-left: 0px;
+    margin-top:70px;
+    // display: grid;
+    // grid-template-rows: 25px 25px;
+
+    .epp-img{
+      width:30px;
+      display: flex;
+      justify-content: center;
+      img{
+        width: 15px;
+    height: 15px;
+    margin-top: 5px;
+      }
+    }
+    .epp-text
+    {
+      background-color: orange;
+    height: 17px;
+    font-size: 12px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    border-radius: 3px;
+    }
+  }
+  .propic-fullname
+  {
+    width:100%;
+    height:100%;
+    display: grid;
+    grid-template-columns: 100px calc(100% - 100px);
+
+    .profilePic
+    {
+      width:60px;
+      height:60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: wheat;
+      border-radius: 50%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      border:5px solid wheat;
+
+      .pro-pic
+      {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        
+      }
+    }
+  }
   
   .profile-form {
     display: flex;

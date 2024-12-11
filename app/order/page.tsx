@@ -122,16 +122,28 @@ class OrdersPage extends Component//<{}, OrdersState>
           ? <div style={{textAlign:'center'}}> no orders found </div>
           : orders.map((order:any,orderI:number)=>(
             <div key={orderI} className='order-card'>
-              <div className='order-title'>
-               <strong>{order.comicData.title}</strong>
+              <div className='profileDetails'>
+                <div className='user-img'>
+                  <img src={!!order.profileData.profilepic ? order.profileData.profilepic : "/assets/images/profile/user.png"}></img>
+                </div>
+                <div className='user-name'>
+                <strong>username: </strong>{order.profileData.fullName}
+                </div>
+              
               </div>
                <div className='order-image-description'>
                 <div className='order-image'>
                   <img src={order.comicData.banner} alt="" />
                 </div>
-                <div className='order-description'>
-                {order.comicData.description}
+                <div className='order-title-descripton'>
+                  <div>
+                    <strong>{order.comicData.title}</strong>
+                  </div>
+                  <div className='order-description'>
+                    {order.comicData.description}
+                  </div>
                 </div>
+                
               </div>
               <div className='order-author-genre-publisher text_dotdotdot'>
                 <div><strong>author: </strong>{order.comicData.author}</div>
@@ -141,7 +153,7 @@ class OrdersPage extends Component//<{}, OrdersState>
               <div className='order-status-accept-delete'>
                 <div className='order-status'><strong>status: </strong><span className={`${order.order.status}`}>{order.order.status}</span></div>
                 {
-                 (this.userInfo.roleName === "User" || this.userInfo.roleName === "Admin" && order.order.status !== "order completed") &&
+                 (this.userInfo.roleName === "User" && order.order.status !== "order completed" || this.userInfo.roleName === "Admin" && order.order.status !== "order completed") &&
                   <div className='order-cancel' onClick={()=> this.cancelOrder(order)} >cancel order</div>
                 }
                 {

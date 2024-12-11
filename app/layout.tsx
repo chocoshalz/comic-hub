@@ -33,10 +33,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+          <link href="https://fonts.googleapis.com/css?family=Schoolbell&v1" rel="stylesheet" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" />
+        </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased header-content-footer-container`}
       >
-        <div className="header-content-footer-container">
+        <div className="header-content-footer-container text">
             <header className="hcf-header">
               <HeaderComponent></HeaderComponent>
             </header>
@@ -45,8 +49,8 @@ export default function RootLayout({
               <nav className="left-side-menu">
                 <Menu />
               </nav>
-
-              <main className="right-side-content">
+              {/* style={{backgroundColor:'#F0EBE5'}} */}
+              <main className="right-side-content" >
                 {children}
               </main>
             </div>

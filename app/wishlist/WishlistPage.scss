@@ -1,0 +1,110 @@
+// File: WishlistPage.scss
+
+.wishlist-root {
+  padding: 30px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9fafb;
+  height: calc(100vh - 60px);
+
+  .wishlist-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1f2937;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .wishlist-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .wishlist-item {
+      display: flex;
+      align-items: flex-start;
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      padding: 20px;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      &.ordered {
+        border-left: 5px solid #34d399;
+      }
+
+      .wishlist-item-banner {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-right: 20px;
+      }
+
+      .wishlist-item-details {
+        flex: 1;
+
+        .wishlist-item-title {
+          font-size: 20px;
+          font-weight: bold;
+          color: #111827;
+          margin-bottom: 10px;
+        }
+
+        .wishlist-item-description {
+          font-size: 14px;
+          color: #6b7280;
+          margin-bottom: 10px;
+          line-height: 1.5;
+          height: 100px;
+          overflow-y: auto;
+        }
+
+        .wishlist-item-price {
+          font-size: 16px;
+          font-weight: bold;
+          color: #10b981;
+          margin-bottom: 15px;
+        }
+
+        .wishlist-item-actions {
+          display: flex;
+          gap: 10px;
+
+          .wishlist-btn {
+            padding: 8px 15px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+
+            &.order-btn {
+              background-color: #2563eb;
+              color: #fff;
+              border: none;
+
+              &:hover {
+                background-color: #1d4ed8;
+              }
+            }
+
+            &.remove-btn {
+              background-color: #dc2626;
+              color: #fff;
+              border: none;
+
+              &:hover {
+                background-color: #b91c1c;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

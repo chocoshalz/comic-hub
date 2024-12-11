@@ -1,4 +1,4 @@
-import { cart, comics } from "@/db/schema";
+import { cart, comics, profile } from "@/db/schema";
 import { db } from "@/lib/db";
 import { eq, and } from "drizzle-orm";
 class CartServer {
@@ -71,8 +71,36 @@ class CartServer {
     return results;
   }
   
+  async getCartByUserId(userId: string) {
+    let results: any = { status: "something went wrong" };
   
-  async getCartByUserId(userId: string)
+    try {
+      // Query cart items along with comic data and profile data
+      const cartWithDetails = await db
+        .select({
+          cartItems: cart, // Select all fields from cart table
+          comicData: comics, // Select all fields from comics table
+          profileData: profile, // Select all fields from profile table
+        })
+        .from(cart)
+        .leftJoin(comics, eq(cart.comicId, comics.id)) // Join with the comics table on comicId
+        .leftJoin(profile, eq(cart.userId, profile.userId)) // Join with the profile table on userId
+        .where(eq(cart.userId, userId)); // Filter by userId
+  
+      results["cartItems"] = cartWithDetails;
+      results["status"] = 200;
+      results["message"] = "Cart items retrieved successfully";
+    } catch (error: any) {
+      console.error(`Error fetching cart items for user ID ${userId}:`, error);
+      results["error"] = error.message || error;
+      results["status"] = 500;
+    }
+  
+    return results;
+  }
+  
+  
+  async getCartByUserId1(userId: string)
   {
     let results: any = { status: "something went wrong" };
 
