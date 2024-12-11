@@ -1,0 +1,49 @@
+// ComicFilter.scss
+.range-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  
+    .range-slider {
+      position: relative;
+      width: 300px;
+  
+      input[type="range"] {
+        position: absolute;
+        width: 100%;
+        appearance: none;
+        pointer-events: none;
+  
+        &::-webkit-slider-thumb {
+          appearance: none;
+          pointer-events: auto;
+          height: 16px;
+          width: 16px;
+          border-radius: 50%;
+          background-color: #007bff;
+          cursor: pointer;
+        }
+  
+        &::-webkit-slider-runnable-track {
+          background-color: #ddd;
+          height: 4px;
+        }
+      }
+    }
+  
+    .range-values {
+      display: flex;
+      justify-content: space-between;
+      width: 300px;
+  
+      .min-box,
+      .max-box {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+      }
+    }
+  }
+  
