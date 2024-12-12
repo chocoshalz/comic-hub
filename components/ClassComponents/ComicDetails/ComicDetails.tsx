@@ -19,6 +19,9 @@ import CartClient from "@/services/client/common/ClientServices/CartClient";
 import OrderPaymentForm from "../OrderPaymentForm/OrderPaymentForm";
 import { userInfo } from "os";
 import ProfileClient from "@/services/client/common/ClientServices/ProfileClient";
+import DescriptionReviews from "../DescriptionReviews/DescriptionReviews";
+import { Tabs, Tab, Box, Typography } from '@mui/material';
+
 interface UsersPageProps {
   searchParams: URLSearchParams;
   router:any
@@ -45,6 +48,7 @@ interface Comic {
   rating: number;
   addWishlist:boolean;
   addCart:boolean;
+  publicationyear:string;
 }
 
 class ComicDetails extends Component<UsersPageProps> {
@@ -52,6 +56,7 @@ class ComicDetails extends Component<UsersPageProps> {
     wishListServ:WishListClient
     cartServ:CartClient
   state = {
+    activeTab: 0,
     userInfo:{roleName:"Guest User"},
     loading:false,
     isModalOpen: false,
@@ -67,6 +72,7 @@ class ComicDetails extends Component<UsersPageProps> {
       banner: "",
       addWishlist:false,
       addCart:false,
+      publicationyear:"",
       reviews: [
         // { id: "1", user: "John Doe", comment: "Amazing comic!", rating: 5 },
         // { id: "2", user: "Jane Smith", comment: "Loved it!", rating: 4 },
@@ -97,6 +103,10 @@ class ComicDetails extends Component<UsersPageProps> {
     this.getRatingsReviews()
     
   }
+
+  handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+    this.setState({ activeTab: newValue });
+  };
 
   getRatingsReviews()
   {
@@ -157,6 +167,7 @@ class ComicDetails extends Component<UsersPageProps> {
         comic['publisher'] = res.publisher
         comic['price'] = res.price
         comic['banner'] = res.banner
+        comic['publicationyear'] = res.publicationyear
         
         this.setState({
             loading:false,
@@ -218,6 +229,7 @@ class ComicDetails extends Component<UsersPageProps> {
       newReview: { ...prevState.newReview, rating: parseInt(value, 10) },
     }));
   };
+
 
   handlePostReview = (e: FormEvent, userId:string) => {
     e.preventDefault();
@@ -485,7 +497,8 @@ class ComicDetails extends Component<UsersPageProps> {
   }
 
   render() {
-    const { comic, newReview, loading } = this.state;
+    const { comic, newReview, loading, activeTab } = this.state;
+    console.log("comic => ", comic)
     let user:any = this.state.userInfo
     const switchtype:string = !!user ? user?.roleName : "Guest User" 
     if(loading)
@@ -519,6 +532,7 @@ class ComicDetails extends Component<UsersPageProps> {
               <p><strong>Genre:</strong> {comic.genre}</p>
               <p><strong>Author:</strong> {comic.author}</p>
               <p><strong>Publisher:</strong> {comic.publisher}</p>
+              <p><strong>Publication Year:</strong> {comic?.publicationyear}</p>
               <p><strong>Price:</strong> {comic.price}</p>
               <div className="comic-actions">
                 {
@@ -529,7 +543,7 @@ class ComicDetails extends Component<UsersPageProps> {
                         </IconButton> */}
 
                         <IconButton onClick={()=> this.addToCart(comic)} className="menu-icon add-to-cart">
-                            <ShoppingCartIcon style={{ color:  comic['addCart'] === true ? "red" : 'gray' }} /> 
+                            <ShoppingCartIcon style={{ color:  comic['addCart'] === true ? "#66260c" : 'gray' }} /> 
                         </IconButton>
                     </div>
                 }
@@ -560,14 +574,29 @@ class ComicDetails extends Component<UsersPageProps> {
             </div>
           </div>
 
-          {/* Third Row: Description */}
-          <div className="comic-description">
-            <h3>Description</h3>
-            <p>{comic.description}</p>
-          </div>
-        </div>
 
-        {/* Reviews Section */}
+
+          <Box>
+            <Tabs value={activeTab} onChange={this.handleTabChange}>
+              <Tab label="Description" />
+              <Tab label="Reviews" />
+            </Tabs>
+
+            {activeTab === 0 && (
+              <Box p={2}>
+              {/* Third Row: Description */}
+                  <div className="comic-description">
+                    <h3>Description</h3>
+                    <p>{comic.description}</p>
+                  </div>
+                {/* <Typography variant="h6">Description</Typography>
+                <Typography variant="body1">{comic.description}</Typography> */}
+              </Box>
+            )}
+
+            {activeTab === 1 && (
+              <Box p={2}>
+                 {/* Reviews Section */}
         <div className="reviews-section">
           <h2>Reviews</h2>
           <div className="reviews-list">
@@ -575,7 +604,7 @@ class ComicDetails extends Component<UsersPageProps> {
             comic.reviews.length === 0
             ? <div style={{width:'100%', textAlign:'center'}}><h2>no reviews</h2></div>
             :comic.reviews.map((review:any, reviewI:number) => (
-              <div key={review.id} className="review-item">
+              <div key={reviewI} className="review-item">
                 {review.isEditing ? (
                   <div className="edit-review">
                     <div>
@@ -655,26 +684,21 @@ class ComicDetails extends Component<UsersPageProps> {
               required
             ></textarea>
             <div style={{margin:"10px 0px"}} >
-            <StarRating fontSize={20} editable={true} onChange={(e)=> this.setRating(e)} ></StarRating>
+            <StarRating fontSize={20} editable={true} value={newReview.rating} onChange={(e)=> this.setRating(e)} ></StarRating>
             </div>
-            {/* <select
-              name="rating"
-              value={newReview.rating}
-              onChange={this.handleRatingChange}
-              required
-            >
-              <option value={0}>Select Rating</option>
-              {[1, 2, 3, 4, 5].map((rating) => (
-                <option key={rating} value={rating}>
-                  {rating}⭐
-                </option>
-              ))}
-            </select> */}
             <button type="submit">Post Review</button>
           </form>
           }
           
         </div>
+              </Box>
+            )}
+          </Box>
+
+          {/* <DescriptionReviews comic={comic}></DescriptionReviews> */}
+        </div>
+
+       
       </div>
         </div>
     );

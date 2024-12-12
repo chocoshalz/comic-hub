@@ -80,6 +80,10 @@ class UsersList extends Component<props> {
     const updatedUsers = [...this.state.users];
     const updatedUser = updatedUsers[index];
     console.log("updatedUser => ",updatedUser)
+    let payload:any = { username: updatedUser.username, email: updatedUser.email, accountStatus:updatedUser.accountStatus}
+    this.userServ.patchUser(updatedUser.id, payload).subscribe((res:any)=>{
+      console.log("status update => ", res)
+    })
     // Update the user data in state
     updatedUsers[index] = updatedUser;
 

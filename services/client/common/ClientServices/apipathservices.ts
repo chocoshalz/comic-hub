@@ -4,6 +4,7 @@ export const API_BASE_URL = '/api'//'https://your-api-url.com/api';
 export const API_PATHS = {
   USERS: `/users`,
   USER_BY_ID: (userId: number) => `/users/${userId}`,
+  UpdateUserById: (userId:string)=> `/users?userid=${userId}`,
   GetSpecificUsers: (roleName: string) => `/users?getspecificusers=${roleName}`,
   CreateRole:"/roles",
   GetAllRoles_Get:"/roles",
@@ -31,6 +32,7 @@ export const API_PATHS = {
   //PROFILES
   PROFILES:'profile',
   PROFILE_BY_ID: (userId:string) => `profile?userid=${userId}`,
+  UpdatePROFILE_BY_ID: (Id:string) => `profile?id=${Id}`,
 
   Order:"/orders",
   GetGlobalOrders:"/orders",

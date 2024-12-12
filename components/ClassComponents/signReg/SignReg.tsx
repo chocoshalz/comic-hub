@@ -6,6 +6,7 @@ import TextField from "@mui/material/TextField";
 import toast from "react-hot-toast";
 import UserClient from "@/services/client/common/ClientServices/UserClient";
 import RoleClient from "@/services/client/common/ClientServices/RoleClient";
+import UserRolesClient from "@/services/client/common/ClientServices/UserRolesClient";
 
 interface SignRegProps {
   onChildAction: (data: any) => void;
@@ -25,6 +26,7 @@ interface SignRegState {
 class SignReg extends Component<SignRegProps, SignRegState> {
   userServ!: UserClient;
   roleService!:RoleClient
+  UserRolesServ:UserRolesClient
   state = {
     roles:[],
     signUp:true,
@@ -38,6 +40,7 @@ class SignReg extends Component<SignRegProps, SignRegState> {
     super(props);
     this.userServ = new UserClient();
     this.roleService = new RoleClient()
+    this.UserRolesServ = new UserRolesClient()
   }
 
   componentDidMount(): void {

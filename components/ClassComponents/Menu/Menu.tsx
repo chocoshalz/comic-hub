@@ -14,7 +14,8 @@ class Menu extends Component<MenuProps> {
     userInfo:{roleName:"Guest User"},
     menuList: [
       { name: "Profile", url: "/profile", userType:["User", "Admin"] },
-      { name: "Dashboard", url: "/dashboard", userType:["User", "Admin", "Guest User"] },
+      { name: "Home", url: "/home", userType:["User", "Admin", "Guest User"] },
+      { name: "Comics", url: "/dashboard", userType:["User", "Admin", "Guest User"] },
       { name: "Users", url: "/users", userType:["Admin"] },
       { name: "Roles", url: "/roles", userType:["Admin"] },
       // { name: "Wish List", url: "/wishlist" },
@@ -64,13 +65,13 @@ class Menu extends Component<MenuProps> {
   render() {
     const { userInfo } = this.state
     return (
-      <div className="sidemenu-root-class">
-        <div className="menu">
+      <div className="sidemenu-root-class comic-hub-color5">
+        <div className="menu comic-hub-color5">
           {this.state.menuList.map((menu: any, menuI: number) => (
             <div
               key={menuI}
               onClick={() => this.navigateTo(menu)}
-              className={this.state.activeMenu === menu.name ? "active" : ""}
+              className={`shape-reshape-btn ${this.state.activeMenu === menu.name ? "active" : ""} comic-hub-color3`}
             >
               {menu.name}
             </div>

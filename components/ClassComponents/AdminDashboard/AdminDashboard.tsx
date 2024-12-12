@@ -64,7 +64,7 @@ class AdminDashboard extends Component<ProductsPageProps> {
                     <div className="item-title">
                         {card.title}
                     </div>
-                    <div className="item-image">
+                    <div className="item-image hey-hithere">
                     <img src={card.image}></img>
                         
                     </div>

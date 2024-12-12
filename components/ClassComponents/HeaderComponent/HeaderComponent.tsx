@@ -195,8 +195,9 @@ class HeaderComponent extends Component<HeaderComponentState>
           </div> */}
           <div className='logo-part'>
             <div className="logo-container">
-               <img src="/assets/icons/logo1.svg" alt="Logo" className="logo" />
-               <div className='logo-name-'>comic hub</div>
+               {/* <img src="/assets/icons/logo1.svg" alt="Logo" className="logo" /> */}
+               <img src="/assets/icons/logo.jpg" alt="Logo" className="logo" />
+               {/* <div className='logo-name-'>comic hub</div> */}
              </div>
           </div>
         </div>;
@@ -209,7 +210,7 @@ class HeaderComponent extends Component<HeaderComponentState>
           </div> */}
           <div className='logo-part'>
             <div className="logo-container">
-               <img src="/assets/icons/logo1.svg" alt="Logo" className="logo" />
+               <img src="/assets/icons/logo.jpg" alt="Logo" className="logo" />
                <div className='logo-name-'>comic hub</div>
              </div>
           </div>
@@ -223,7 +224,7 @@ class HeaderComponent extends Component<HeaderComponentState>
           </div> */}
           <div className='logo-part'>
             <div className="logo-container">
-               <img src="/assets/icons/logo1.svg" alt="Logo" className="logo" />
+               <img src="/assets/icons/logo.jpg" alt="Logo" className="logo" />
                <div className='logo-name-'>comic hub</div>
              </div>
           </div>
@@ -236,8 +237,8 @@ class HeaderComponent extends Component<HeaderComponentState>
   UserType_Left_Content(){
     return (<div className='logo-part'>
       <div className="logo-container">
-         <img src="/assets/icons/logo1.svg" alt="Logo" className="logo" />
-         <div className='logo-name-'>comic hub</div>
+         <img src="/assets/icons/logo.jpeg" alt="Logo" className="logo" />
+         {/* <div className='logo-name-'>comic hub</div> */}
        </div>
        <div className='heading'>
         {this.state.heading.heading}
@@ -270,14 +271,14 @@ class HeaderComponent extends Component<HeaderComponentState>
           <div className='' style={{width:'100px', display:'flex', justifyContent:'center'}} >
             {this.AdminBadgeIcon()}
           </div>
-          <div onClick={()=> this.signOut()} className='sign-btn'>
+          <div onClick={()=> this.signOut()} className='sign-btn shape-reshape-btn'>
             Sign Out
           </div>
         </div>;
       case "Guest User":
         return <div className='guest-user-content'>
           <div>
-          <div onClick={()=> this.signIn()} className='sign-btn'>
+          <div onClick={()=> this.signIn()} className='sign-btn shape-reshape-btn'>
             Sign In
           </div>
           </div>

@@ -5,6 +5,7 @@ import { PutBlobResult } from "@vercel/blob";
 import ComicClient from "@/services/client/common/ClientServices/ComicClient";
 import toast from "react-hot-toast";
 import React from "react";
+import YearPicker from "@/components/FunctionalComponents/YearPicker/YearPicker";
 
 interface UploadComicProps {
   setData?:any
@@ -20,6 +21,7 @@ interface UploadComicState {
   description: string;
   banner: File | null;
   bannerPreview: string | null;
+  publicationyear: string,
   errors: {
     [key: string]: string;
   };
@@ -41,6 +43,7 @@ class UploadComic extends Component<UploadComicProps, UploadComicState> {
       description: this.props.setData?.description || "",
       banner: this.props.setData?.banner || null,
       bannerPreview: this.props.setData?.banner || null,
+      publicationyear: this.props.setData?.publicationyear || null,
       errors: {},
     };
 
@@ -95,7 +98,7 @@ class UploadComic extends Component<UploadComicProps, UploadComicState> {
   };
 
   validateForm = () => {
-    const { title, genre, author, publisher, price, description, banner } = this.state;
+    const { title, genre, author, publisher, price, description, banner, publicationyear } = this.state;
     const errors: { [key: string]: string } = {};
 
     if (!title.trim()) errors.title = "Title is required";
@@ -105,14 +108,16 @@ class UploadComic extends Component<UploadComicProps, UploadComicState> {
     if (!price.trim() || isNaN(Number(price))) errors.price = "Valid price is required";
     if (!description.trim()) errors.description = "Description is required";
     if (!banner) errors.banner = "Banner image is required";
+    if (!publicationyear) errors.publicationyear = "Publication Year is required";
 
     this.setState({ errors });
     return Object.keys(errors).length === 0;
   };
 
   handleSubmit = () => {
+    console.log("submit => ", this.validateForm())
     if (this.validateForm()) {
-      const { title, genre, author, publisher, price, description, banner } = this.state;
+      const { title, genre, author, publisher, price, description, banner, publicationyear } = this.state;
 
       let editbanner:any = this.props?.setData
       if(editbanner?.banner.includes("https://"))
@@ -121,11 +126,21 @@ class UploadComic extends Component<UploadComicProps, UploadComicState> {
         this.updateComic(typeof banner !== "string", this.state)
       } 
       else{
-        this.props.onSubmit({ title, genre, author, publisher, price, description, banner });
+        this.props.onSubmit({ title, genre, author, publisher, price, description, banner, publicationyear });
         this.CreateComic(this.state)
       } 
     }
   };
+
+  handleSelectYear(year:string)
+  {
+    console.log("selected year => ", year)
+    this.setState((prevState) => ({
+      ...prevState,
+      ['publicationyear']: year,
+      errors: { ...prevState.errors, ['publicationyear']: "" },
+    }));
+  }
 
   async updateComic(updaimage:boolean, payload:any)
   {
@@ -177,9 +192,12 @@ class UploadComic extends Component<UploadComicProps, UploadComicState> {
       {
         reqObj["banner"] = newBlob.url;
         (await this.comicServ.createComic(reqObj)).subscribe((createComicRes: any) => {
-          this.props.onSubmit(createComicRes)
+          if(createComicRes.status === 200)
+          {
+            this.props.onSubmit(createComicRes)
             console.log("createComicRes => ", createComicRes);
             toast.success("successfully created a comic");
+          }
         })
         
   
@@ -190,10 +208,12 @@ class UploadComic extends Component<UploadComicProps, UploadComicState> {
   {
     this.comicServ.deleteComic({id:this.props.setData.id})
   }
+
+  
   
 
   render() {
-    const { title, genre, author, publisher, price, description, bannerPreview, errors } = this.state;
+    const { title, genre, author, publisher, price, description, bannerPreview, publicationyear, errors } = this.state;
     let editbanner:any = this.props?.setData//.?bannerPreview
     return (
       <div className="add-comics-tolist" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
@@ -283,6 +303,9 @@ class UploadComic extends Component<UploadComicProps, UploadComicState> {
 
           {/* Price Section */}
           <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "20px" }}>
+                <div>
+                  <YearPicker setYearV={publicationyear} onYearSelect={(year:any) => this.handleSelectYear(year)} />
+                </div>
             <TextField
               label="Price"
               name="price"

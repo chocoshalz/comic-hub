@@ -24,7 +24,8 @@ class ComicClient
                 "price": payload.price,
                 "genre":payload.genre,
                 "author":payload.author,
-                "publisher":payload.publisher
+                "publisher":payload.publisher,
+                "publicationyear":payload.publicationyear,
             }
           }
         return await post(API_PATHS.CreateComics_POSt,req)
@@ -45,7 +46,8 @@ class ComicClient
                 "price": payload.price,
                 "genre":payload.genre,
                 "author":payload.author,
-                "publisher":payload.publisher
+                "publisher":payload.publisher,
+                "publicationyear":payload.publicationyear,
             }
           }
         return await post(API_PATHS.CreateComics_POSt,req)

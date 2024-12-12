@@ -8,6 +8,7 @@ class SubjectService {
   public  isAuthenticated:boolean = false
   private openSignInPopup = new Subject<any>()
   private orderPaymentData = new ReplaySubject<any>()
+  private filterComicData = new ReplaySubject<any>()
 
   sendData(data: any) {
     this.dataSubject.next(data); // Emit the new data
@@ -35,6 +36,9 @@ class SubjectService {
 
   setorderPaymentData(data:any){this.orderPaymentData.next(data)}
   getorderPaymentData(){return this.orderPaymentData.asObservable()}
+
+  setfilterComicData(data:any){this.filterComicData.next(data)}
+  getfilterComicData(){return this.filterComicData.asObservable()}
 
 }
 

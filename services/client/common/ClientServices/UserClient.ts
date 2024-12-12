@@ -39,13 +39,13 @@ class UserClient {
   }
 
   // Update user (PUT)
- updateUser(userId: number, userData: { username?: string; email?: string }): Observable<any> {
-    return from(put(API_PATHS.USER_BY_ID(userId), userData));
+ updateUser(userId: string, userData: { username?: string; email?: string, accountStatus:string }): Observable<any> {
+    return from(put(API_PATHS.UpdateUserById(userId), userData));
   }
 
   // Partially update user (PATCH)
-  patchUser(userId: number, userData: { username?: string; email?: string }): Observable<any> {
-    return from(patch(API_PATHS.USER_BY_ID(userId), userData));
+  patchUser(userId: string, userData:any): Observable<any> {
+    return from(patch(API_PATHS.UpdateUserById(userId), userData));
   }
 
   // Delete user
