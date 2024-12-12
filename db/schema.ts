@@ -49,6 +49,7 @@ export const profile = pgTable('profile', {
   id: uuid('id').defaultRandom().primaryKey().notNull(),
   userId: uuid('userId').notNull(), // Foreign key referencing the users table
   fullName: text('fullName').notNull(),
+  profilepic: text('profilepic'),
   address: text('address').notNull(),
   city: text('city').notNull(),
   state: text('state').notNull(),
@@ -92,6 +93,7 @@ export const comics = pgTable('comics', {
   genre: text('genre').notNull(),
   author: text('author').notNull(),
   publisher: text('publisher').notNull(),
+  publicationyear: text('publicationyear').notNull(),
   price: numeric('price').notNull().default('0'), // Default as string
   description: text('description'),
   banner: text('banner'),
