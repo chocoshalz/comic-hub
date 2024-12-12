@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload</title>
+  <style>
+    #fileDetails {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Div element acting as the button -->
+  <div id="fileDetails" onclick="handleFileUpload()">Click to Upload File</div>
+
+  <!-- Hidden file input -->
+  <input type="file" id="fileInput" style="display: none;" accept="image/*" onchange="handleFileSelection(event)">
+
+  <script>
+    // Handle click on the div and trigger the file input
+    function handleFileUpload() {
+      const fileInput = document.getElementById('fileInput');
+      fileInput.click(); // Open the file dialog when the div is clicked
+    }
+
+    // Handle the file selection
+    function handleFileSelection(event) {
+      const fileInput = event.target;
+      const file = fileInput.files[0]; // Get the first file selected
+
+      if (file) {
+        console.log('Selected file:', file.name);
+        // Do something with the file, like displaying or uploading it
+      } else {
+        console.log('No file selected.');
+      }
+    }
+  </script>
+
+</body>
+</html>
